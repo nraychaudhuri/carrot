@@ -27,9 +27,15 @@ You could run the following code to generate load on redis server to see the rep
 
 
 `import net.fyrie.redis._
+
 val r = new RedisClient("localhost", 6379)
+
 def update(i: Int) = (1 to i).toList.foreach(x => r.set("key" + x, "some value" + x))
+
 (1 to 3600000).foreach { x =>
+	
  Thread.sleep(1000)
+
  update((Math.random * 100).toInt)
+
 }` 
